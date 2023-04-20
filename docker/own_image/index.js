@@ -1,7 +1,7 @@
 var express = require('express')
 var app = express()
 
-port = 3000
+let port = process.env.PORT || 8000;
 
 /* 
     Implementing the following:
@@ -198,4 +198,6 @@ app.use('*', (req, res) => {
 	});
 });
 
-app.listen(port)
+app.listen(port, (req, res, next) => {
+    console.log(`Server listening on port ${port}`)
+})
