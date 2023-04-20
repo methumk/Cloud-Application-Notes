@@ -54,7 +54,7 @@ We want to make sure node_modules/dir is not copies from our local machine to th
 # Build the image from dockerfile
 To build the image from our dockerfile we have to run the docker build command
 
-    docker buiild -t book-a-place-api .
+    docker build -t book-a-place-api .
 
 
 The -t option tags the image with the name book-a-place-api. When we run docker images, our image will show up with this name
@@ -64,6 +64,11 @@ The . argument sets the **build context** for our image construction to the curr
 The build context is set of files available to Docker as it's building an image. E.g. COPY instructions copy files from build context to the image. The dockerfile is also located at the top level of the build context by default
 
 After executing command we should see our new image through `docker image ls`
+
+
+## Creating docker container without running
+Useful when you want to see the container without running it
+    docker create --name container-name image-name:latest
 
 
 
