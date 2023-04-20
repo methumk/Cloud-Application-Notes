@@ -6,9 +6,12 @@ FROM node:16
 WORKDIR /usr/src/app
 
 # Copy files we want to working dir
-COPY package-lock.json /usr/src/app
-COPY package.json /usr/src/app
-COPY index.js /usr/src/app
+# COPY package-lock.json /usr/src/app
+# COPY package.json /usr/src/app
+# COPY index.js /usr/src/app
+
+# Copy all files in root to working dir (some files ignore in .dockerignore)
+COPY . /usr/src/app/
 
 
 # run npm install to install our server's dependencies

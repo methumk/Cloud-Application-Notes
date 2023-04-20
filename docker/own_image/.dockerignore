@@ -1,3 +1,6 @@
 .git
 node_modules
 npm_debug.log
+Dockerfile
+.dockerignore
+creating_docker_image.md
