@@ -9,7 +9,8 @@ Docker image built with docker file needs to be based on already-existing docker
 
 New layers created by the dockerfile are placed on top of the last layer in this base image, which is specified first in the dockerfile using the FROM instruction
 
-We will be basing image off of official Node.js image (v16) which has node.js and dependencies installed
+We will be basing image off of official Node.js image (v16) which has node.js and dependencies installed:
+
     FROM node:16
 
 Next set the working dir for the subsequent instructions in the dockerfile using WORKDIR
@@ -21,16 +22,21 @@ Next we need to install server's runtime dependencies. We want to make the entir
 NOTE: there will be some files wedon't want to copy into the iumage we're buiilding we can do this through .dockerignore file
 
 Then we can run our command using RUN, to install our dependencies
+
     RUN npm install
 
 Then set up container environment variable
+
     ENV varname=value
+
 The value of the variable is gotten through the syntax: ${varname}
 
 We then want to indicate that containers based on our image will listen on a specified port. We do this through the expose variable
 
 After that we can use the CMD instruction to specifiy the default command to be run when executing a container from the image
+
     CMD ["command", "goes", "here"]
+
 The command is executed from within working dir specified in WORKDIR
 
 
@@ -38,6 +44,7 @@ The command is executed from within working dir specified in WORKDIR
 Allows us to specify which files to be ignored when copying files to our image with COPY instruction
 
 We want to make sure node_modules/dir is not copies from our local machine to the image, along with git dir and any debug logs generated:
+
         .git
     node_modules
     npm_debug.log
@@ -65,10 +72,10 @@ Our image has our server code and dependncies packaged up within it. We now have
 
 Run command:
 
-    ```docker run -d				\
+    docker run -d				\
         --name book-a-place-api	\
         -p 8000:8000			\
-        book-a-place-api```
+        book-a-place-api
 
 
 Running in detached mode means we can't see server logs in terminal, We can use command:
