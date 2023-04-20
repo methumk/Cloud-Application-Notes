@@ -29,7 +29,7 @@ Then set up container environment variable
 
     ENV varname=value
 
-The value of the variable is gotten through the syntax: ${varname}
+The value of the variable is gotten through the syntax: ${varname} or $varname
 
 We then want to indicate that containers based on our image will listen on a specified port. We do this through the expose variable
 
@@ -68,6 +68,7 @@ After executing command we should see our new image through `docker image ls`
 
 ## Creating docker container without running
 Useful when you want to see the container without running it
+
     docker create --name container-name image-name:latest
 
 
