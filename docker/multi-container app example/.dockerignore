@@ -1,0 +1,6 @@
+.git
+node_modules
+npm_debug.log
+Dockerfile
+.dockerignore
+multi-container.md

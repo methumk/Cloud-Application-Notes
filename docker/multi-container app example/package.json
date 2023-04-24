@@ -1,0 +1,17 @@
+{
+  "name": "multi-container-app-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "simulatedDB.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db": "node simulatedDB.js",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "isomorphic-unfetch": "^4.0.2"
+  }
+}

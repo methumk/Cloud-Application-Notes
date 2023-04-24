@@ -1,0 +1,17 @@
+# Dockerfile for server
+FROM node:16
+WORKDIR /usr/src/app
+
+
+# COPY . .
+# Above command copy a bunch so just specified
+COPY lodgings.json /usr/src/app/
+COPY simulatedDB.js /usr/src/app/
+COPY package.json /usr/src/app/
+COPY package-lock.json /usr/src/app/
+
+RUN npm install
+# NOTE: no db_host or db_port here; these are provided when we runt the command docker run
+ENV PORT=5678
+EXPOSE ${PORT}
+CMD [ "npm", "run", "db" ]
