@@ -1,0 +1,27 @@
+# All of containers associated with multi-container app are specified under top level element called services
+services:
+# Each indiv container defined as separate sub-element nested within this service element
+# Cuz our app has container to run db serve, we can create entry under services called db to represent the container
+  db:
+  # Include params that encapsulate calls we'd make to docker build and docker run to get container running
+  # Build entry to tell Docker how to build image
+  # We can pass in env variables just like passing -e options to docker run
+  # NOTE: didn't specify docker network cuz compose will create a new bridge network and connect all cotnainers in app to that network by default
+    build:
+      context: .
+      dockerfile: Dockerfile-db
+    environment:
+      PORT: 5678
+  
+  api:
+  # For API, our dockerfile has default name so we do build .
+  # Specify env names
+  # Specify port
+    build: .
+    environment:
+      PORT: 8000
+      DB_HOST: db
+      DB_PORT: 5678
+    ports: 
+      - "8000:8000"
+
