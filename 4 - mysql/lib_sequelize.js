@@ -1,0 +1,14 @@
+// Import sequelize
+const { Sequelize } = require('sequelize')
+
+// Establish connection params specified as env variables
+const db = new Sequelize({
+  dialect: 'mysql',
+  host: process.env.MYSQL_HOST || 'localhost',
+  port: process.env.MYSQL_PORT || 3306,
+  database: process.env.MYSQL_DB,
+  username: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD
+})
+
+module.exports = db
